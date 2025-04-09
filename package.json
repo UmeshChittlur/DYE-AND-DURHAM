@@ -1,0 +1,17 @@
+{
+  "name": "dye-and-durham",
+  "version": "1.0.0",
+  "description": "Dye And Durham Automation Test",
+  "main": "index.js",
+  "scripts": {
+    "playwright:test:chromium": "npx playwright test --project=chromium --headed"
+  },
+  "keywords": [],
+  "author": "Dye-And-Durham",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.14.0"
+  }
+}
