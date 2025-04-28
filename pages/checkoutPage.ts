@@ -10,7 +10,7 @@ import { CustomerDetails } from '../common/types';
 export class CheckoutPage extends BasePageModel {
     readonly checkoutPage: CheckoutModel;
 
-    constructor(page: Page, url: string = `**${PageURL.CHECKOUT_STEP_ONE}` || `**${PageURL.CHECKOUT_STEP_TWO}`) {
+    constructor(page: Page, url: string = `**${PageURL.CHECKOUT_STEP_ONE}`) {
         super(page, url);
         this.checkoutPage = new CheckoutModel(page);
     };

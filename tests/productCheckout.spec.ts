@@ -31,20 +31,19 @@ test.describe('Product checkout', () => {
                 users: Users.STANDARD_USER,
                 password: Password.VALID_PASSWORD
             },
-            productsToBuy: SwagProducts.SAUCE_LABS_BACKPACK,
-            customerDetails:{
+            productsToBuy: [SwagProducts.SAUCE_LABS_BACKPACK, SwagProducts.SAUCE_LABS_BIKE_LIGHT],
+            customerDetails: {
                 firstName: CustomerPersonalDetails.FIRST_NAME,
                 lastName: CustomerPersonalDetails.LAST_NAME,
                 postalCode: CustomerPersonalDetails.ZIP_POSTAL_CODE
             }
-
-        }
+        };
 
         await loginDetails.navigate();
         await loginDetails.authenticateLogin(testData.userDetails!);
 
         await inventoryPage.verifyURL(PageURL.INVENTORY);
-        await inventoryPage.addProductToBasket(testData.productsToBuy!);
+        await inventoryPage.addProductAndVerify(testData.productsToBuy!);
 
         await basketPage.openBasket();
         await basketPage.verifyURL(PageURL.CART);

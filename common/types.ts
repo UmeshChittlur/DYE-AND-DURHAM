@@ -14,5 +14,5 @@ export type CustomerDetails = {
 export type CheckoutProducts = {
     userDetails?: UserDetails;
     customerDetails?: CustomerDetails;
-    productsToBuy?: SwagProducts;
+    productsToBuy?: SwagProducts[];
 }
