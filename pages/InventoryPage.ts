@@ -5,6 +5,7 @@ import { PageURL } from '../common/enum/urls';
 import { Utils } from '../common/utils';
 import { ProductSortOrder } from '../common/enum/productSortOrder';
 import { SwagProducts } from '../common/enum/products';
+import { ProductState } from '../common/enum/productState';
 
 
 export class InventoryPage extends BasePageModel {
@@ -63,16 +64,37 @@ export class InventoryPage extends BasePageModel {
         };
     };
 
-    private getLocatorFromProductName = (productName: SwagProducts): Locator => {
+    private getLocatorFromProductName = (productName: SwagProducts, productState: ProductState): Locator => {
         const hyphenatedProductName = productName.toLowerCase().replace(/\s/g, '-');
-        return this.page.locator(`[data-test="add-to-cart-${hyphenatedProductName}"]`);
+        const state = productState.toLowerCase().replace(/\s/g, '-');
+        return this.page.locator(`[data-test="${state}-${hyphenatedProductName}"]`);
     };
 
-    async addProductToBasket(productName: SwagProducts): Promise<void> {
-        const addToCart: Locator = this.getLocatorFromProductName(productName);
-        await addToCart.click();
-        await this.page.waitForTimeout(1000);
-        await expect(this.inventoryPage.removeText).toBeVisible();
-        await expect(this.inventoryPage.removeText).toHaveText('Remove');
+    async addProductAndVerify(products: SwagProducts[]): Promise<void> {
+        for (const productName of products) {
+            const addToCartBtn = this.getLocatorFromProductName(productName, ProductState.ADD_TO_CART);
+            await expect(addToCartBtn).toBeVisible();
+            await expect(addToCartBtn).toHaveText(ProductState.ADD_TO_CART);
+            await addToCartBtn.click();
+            await this.page.waitForTimeout(1000);
+
+            const removeBtn = this.getLocatorFromProductName(productName, ProductState.REMOVE);
+            await expect(removeBtn).toBeVisible();
+            await expect(removeBtn).toHaveText(ProductState.REMOVE);
+        };
     };
-}
+
+    async removeProductAndVerify(products: SwagProducts[]): Promise<void> {
+        for (const productName of products) {
+            const removeBtn = this.getLocatorFromProductName(productName, ProductState.REMOVE);
+            await expect(removeBtn).toBeVisible();
+            await expect(removeBtn).toHaveText(ProductState.REMOVE);
+            await removeBtn.click();
+            await this.page.waitForTimeout(1000);
+
+            const addToCartBtn = this.getLocatorFromProductName(productName, ProductState.ADD_TO_CART);
+            await expect(addToCartBtn).toBeVisible();
+            await expect(addToCartBtn).toHaveText(ProductState.ADD_TO_CART);
+        };
+    };
+};

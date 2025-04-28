@@ -2,6 +2,7 @@ import { expect, Page } from '@playwright/test';
 import { BasePageModel } from './BasePageModel';
 import { PageURL } from '../common/enum/urls';
 import { BasketModel } from '../pageObjects/basketModel/basketModel.ui.model';
+import { SwagProducts } from '../common/enum/products';
 
 export class BasketPage extends BasePageModel {
     readonly basketPage: BasketModel;
@@ -15,8 +16,11 @@ export class BasketPage extends BasePageModel {
         await this.basketPage.openBasketIcon.click();
     };
 
-    async verifyProductInBasket(productToVerify: string): Promise<void> {
-        await expect(this.basketPage.basketProduct).toHaveText(productToVerify);
+    async verifyProductInBasket(productToVerify: SwagProducts[]): Promise<void> {
+        for (const product of productToVerify) {
+            const productLocator = this.basketPage.basketProduct.locator(`text=${product}`)
+            await expect(productLocator).toHaveText(product);
+        }
     };
 
     async basketCheckoutButton(): Promise<void> {

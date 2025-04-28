@@ -4,7 +4,10 @@
   "description": "Dye And Durham Automation Test",
   "main": "index.js",
   "scripts": {
-    "playwright:test:chromium": "npx playwright test --project=chromium --headed"
+    "playwright:test:chromium": "playwright test --project=chromium --headed",
+    "playwright:test:chromium:headless": "set HEADLESS=true && playwright test --project=chromium",
+    "playwright:test:firefox": "playwright test --project=firefox --headed",
+    "playwright:test:webkit": "playwright test --project=webkit --headed"
   },
   "keywords": [],
   "author": "Dye-And-Durham",
