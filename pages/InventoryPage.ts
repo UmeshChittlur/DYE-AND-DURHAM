@@ -97,4 +97,10 @@ export class InventoryPage extends BasePageModel {
             await expect(addToCartBtn).toHaveText(ProductState.ADD_TO_CART);
         };
     };
+
+    async addFilteredProduct(products: string): Promise<void> {
+        await this.inventoryPage.productItem(products).click();
+    };
+
+
 };
