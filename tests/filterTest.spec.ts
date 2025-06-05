@@ -17,7 +17,7 @@ test.describe('Product sort order', () => {
 
     });
 
-    test.only('Confirm that the product ordering works according to the text in the dropdown list', async () => {
+    test('Confirm that the product ordering works according to the text in the dropdown list', async () => {
         test.slow();
         const testData: UserDetails = {
             users: Users.STANDARD_USER,
