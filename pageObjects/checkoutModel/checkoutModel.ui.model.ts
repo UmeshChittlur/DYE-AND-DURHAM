@@ -26,7 +26,7 @@ export class CheckoutModel {
         this.productDescription = page.locator('[data-test="inventory-item-desc"]');
         this.productPrice = page.locator('[data-test="inventory-item-price"]');
         this.productItemTotal = page.locator('[data-test="subtotal-label"]');
-        this. productTax = page.locator('[data-test="tax-label"]');
+        this.productTax = page.locator('[data-test="tax-label"]');
         this.productTotal = page.locator('[data-test="total-label"]');
         this.finishButton = page.locator('[data-test="finish"]');
         this.thankYouText = page.locator('[data-test="complete-header"]');
