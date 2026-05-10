@@ -25,7 +25,5 @@ export class LoginDetailsPage extends BasePageModel {
     async loginErrorMessage(loginErrorMessage: LoginPageContent): Promise<void> {
         await this.utils.verifyExpectedTextIsDisplayed(this.loginDetails.loginError, loginErrorMessage)
     };
-    async loginErrorMessage1(loginErrorMessage: LoginPageContent): Promise<void> {
-        await this.utils.verifyExpectedTextIsDisplayed(this.loginDetails.loginError, loginErrorMessage)
-    };
+  
 }
