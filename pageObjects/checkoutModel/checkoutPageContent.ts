@@ -6,5 +6,5 @@ export enum CheckoutPageContent {
     TOTAL = '$32.39',
     THANK_YOU_TEXT = 'Thank you for your order!',
     ORDER_DISPATCH_TEXT = 'Your order has been dispatched, and will arrive just as fast as the pony can get there!',
-     ORDER_DISPATCH_TEXT1 = 'Your order has been dispatched, and will arrive just as fast as the pony can get there!'
+     
 }
