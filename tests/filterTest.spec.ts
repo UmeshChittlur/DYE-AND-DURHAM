@@ -29,7 +29,6 @@ test.describe('Product sort order', () => {
 
         await loginDetails.navigate();
         await loginDetails.authenticateLogin(testData);
-        await loginDetails.authenticateLogin(testData);
 
         await inventoryPage.verifyURL(PageURL.INVENTORY);
         await inventoryPage.addFilteredProduct(productName);
